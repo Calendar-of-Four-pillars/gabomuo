@@ -17,10 +17,11 @@
     "paths": {
       "components/*": ["src/components/*"],
       "pages/*": ["src/pages/*"],
-      "utils/*": ["src/utils/*"]
+      "utils/*": ["src/utils/*"],
+      "api/*": ["src/api/*"]
     },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/api/*"]
 }
