@@ -1,4 +1,4 @@
-export const makeUrlToPublicApiFromClient = (
+const makeUrlToPublicApiFromClient = (
   query: Partial<{
     [key: string]: string | string[];
   }>
