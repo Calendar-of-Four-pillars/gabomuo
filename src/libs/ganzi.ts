@@ -1,5 +1,4 @@
 export const ganziByIndex = [
-  '',
   '갑자',
   '을축',
   '병인',

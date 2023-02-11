@@ -6,17 +6,25 @@ export const isLastSeason = (
 ): boolean => {
   const hourGap = hour - comparedHour;
   const minuteGap = minute - comparedMinute;
+
   if (hourGap > 0) {
     return true;
   }
-  if (hourGap === 0 && minuteGap > 0) {
+  if (hourGap === 0 && minuteGap >= 0) {
+    return true;
+  }
+  return false;
+};
+
+export const isNextDay = (hour: number, minute: number): boolean => {
+  if (hour === 23 && minute >= 30) {
     return true;
   }
   return false;
 };
 
 export const isLastDay = (hour: number, minute: number): boolean => {
-  if (hour === 23 && minute <= 30) {
+  if (hour === 23 && minute <= 29) {
     return true;
   }
   return false;
@@ -85,4 +93,89 @@ export const getOrderedNumberFromTime = (hour: number, minute: number): number =
   if (targetTime >= siji.sulStart && targetTime <= siji.sulEnd) return 10;
   if (targetTime >= siji.heStart && targetTime <= siji.heEnd) return 11;
   return 0;
+};
+
+export const getTimeGanziCode = (dayCode: number, si: number) => {
+  if (
+    dayCode === 0 ||
+    dayCode === 10 ||
+    dayCode === 20 ||
+    dayCode === 30 ||
+    dayCode === 40 ||
+    dayCode === 50 ||
+    dayCode === 5 ||
+    dayCode === 15 ||
+    dayCode === 25 ||
+    dayCode === 35 ||
+    dayCode === 45 ||
+    dayCode === 55
+  ) {
+    return 0 + si;
+  }
+  if (
+    dayCode === 1 ||
+    dayCode === 11 ||
+    dayCode === 21 ||
+    dayCode === 31 ||
+    dayCode === 41 ||
+    dayCode === 51 ||
+    dayCode === 6 ||
+    dayCode === 16 ||
+    dayCode === 26 ||
+    dayCode === 36 ||
+    dayCode === 46 ||
+    dayCode === 56
+  ) {
+    return 12 + si;
+  }
+  if (
+    dayCode === 2 ||
+    dayCode === 12 ||
+    dayCode === 22 ||
+    dayCode === 32 ||
+    dayCode === 42 ||
+    dayCode === 52 ||
+    dayCode === 7 ||
+    dayCode === 17 ||
+    dayCode === 27 ||
+    dayCode === 37 ||
+    dayCode === 47 ||
+    dayCode === 57
+  ) {
+    return 24 + si;
+  }
+
+  if (
+    dayCode === 3 ||
+    dayCode === 13 ||
+    dayCode === 23 ||
+    dayCode === 33 ||
+    dayCode === 43 ||
+    dayCode === 53 ||
+    dayCode === 8 ||
+    dayCode === 18 ||
+    dayCode === 28 ||
+    dayCode === 38 ||
+    dayCode === 48 ||
+    dayCode === 58
+  ) {
+    return 36 + si;
+  }
+  if (
+    dayCode === 4 ||
+    dayCode === 14 ||
+    dayCode === 24 ||
+    dayCode === 34 ||
+    dayCode === 44 ||
+    dayCode === 54 ||
+    dayCode === 9 ||
+    dayCode === 19 ||
+    dayCode === 29 ||
+    dayCode === 39 ||
+    dayCode === 49 ||
+    dayCode === 59
+  ) {
+    return 48 + si;
+  }
+  return si;
 };

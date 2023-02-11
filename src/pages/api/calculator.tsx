@@ -1,10 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { NextApiRequest, NextApiResponse } from 'next';
-import convert from 'xml-js';
-import request from 'request';
-import { getOrderedNumberFromTime, isLastSeason } from 'src/libs/time';
-import { ganziByIndex, ganziByKey, getStartGanziIndexOnTime } from 'src/libs/ganzi';
-import makeUrlToPublicApiFromClient from 'src/libs/httpUtils';
+import { getOrderedNumberFromTime, getTimeGanziCode, isLastSeason, isNextDay } from 'src/libs/time';
+import { ganziByIndex } from 'src/libs/ganzi';
 import client from 'src/libs/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -13,64 +10,107 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const dayFromQuery = req.query.day as string;
   const hourFromQuery = req.query.hour as string;
   const minuteFromQuery = req.query.minute as string;
-  const { seasontime }: any = await client.year.findUnique({
+
+  const result = {
+    year: 0,
+    month: 0,
+    day: 0,
+    time: 0
+  };
+  const date = await client.sajuDate.findUnique({
     where: {
-      year: yearFromQuery
+      datekey: `${yearFromQuery}-${monthFromQuery}-${dayFromQuery}`
     }
   });
 
-  const nextSeasonTime = seasontime[String(Number(monthFromQuery))][String(Number(dayFromQuery))];
+  if (!date) {
+    res.json({
+      ok: false,
+      data: '데이터가 없습니다.'
+    });
+    return;
+  }
+  const newDateObj = Object(date?.info);
 
-  request.get(makeUrlToPublicApiFromClient(req.query), (err, response, body) => {
-    if (err) {
-      res.json({ ok: false, data: err });
-    } else if (response.statusCode === 200) {
-      const result = body;
-      const convertedJson = convert.xml2json(result, { compact: true, spaces: 4 });
-      const resultJson = JSON.parse(convertedJson).response.body.items.item;
-      console.log('resultJson', resultJson);
+  if (isNextDay(Number(hourFromQuery), Number(minuteFromQuery))) {
+    result.year = Number(newDateObj.year);
+    result.month = Number(newDateObj.month);
+    result.day = newDateObj.day + 1 === 60 ? 0 : Number(newDateObj.day) + 1;
+  }
 
-      const yearGanziCode =
-        ganziByKey[resultJson.lunSecha._text.split(`(`)[0] as keyof typeof ganziByKey];
-      let monthGanziCode =
-        ganziByKey[resultJson.lunWolgeon._text.split(`(`)[0] as keyof typeof ganziByKey];
-      const dayGanziCode =
-        ganziByKey[resultJson.lunIljin._text.split(`(`)[0] as keyof typeof ganziByKey];
+  if (!isNextDay(Number(hourFromQuery), Number(minuteFromQuery))) {
+    result.year = Number(newDateObj.year);
+    result.month = Number(newDateObj.month);
+    result.day = Number(newDateObj.day);
+  }
 
-      const ganziStartIndex = getStartGanziIndexOnTime(resultJson.lunIljin._text.split(`(`)[0]);
-      const orderedTimeCount = getOrderedNumberFromTime(
-        Number(req.query.hour),
-        Number(req.query.minute)
-      );
+  const nextSeason = await client.seasonYear.findUnique({
+    where: {
+      year: `${yearFromQuery}-${monthFromQuery}-${dayFromQuery}`
+    }
+  });
 
-      const sijin = ganziByIndex[ganziStartIndex + orderedTimeCount];
+  const sizi = getOrderedNumberFromTime(Number(hourFromQuery), Number(minuteFromQuery));
+  result.time = getTimeGanziCode(result.day, sizi);
 
-      if (
-        nextSeasonTime &&
-        isLastSeason(
-          Number(nextSeasonTime.hour),
-          Number(nextSeasonTime.minute),
-          Number(hourFromQuery),
-          Number(minuteFromQuery)
-        )
-      ) {
-        console.log('prev');
-        if (monthGanziCode - 1 < 1) {
-          monthGanziCode = 60;
-        } else {
-          monthGanziCode -= 1;
+  if (!nextSeason) {
+    res.json({
+      ok: true,
+      data: {
+        targetDate: date?.datekey,
+        saju: {
+          year: ganziByIndex[result.year],
+          month: ganziByIndex[result.month],
+          day: ganziByIndex[result.day],
+          time: ganziByIndex[result.time]
         }
       }
+    });
+    return;
+  }
 
-      res.json({
-        ok: true,
-        data: {
-          lunSecha: ganziByIndex[yearGanziCode],
-          lunWolgeon: ganziByIndex[monthGanziCode],
-          lunIljin: ganziByIndex[dayGanziCode],
-          sijin
-        }
-      });
+  const newNextSeason = Object(nextSeason);
+  if (
+    nextSeason &&
+    isLastSeason(
+      Number(newNextSeason.seasontime?.hour as string),
+      Number(newNextSeason.seasontime?.minute as string),
+      Number(hourFromQuery),
+      Number(minuteFromQuery)
+    )
+  ) {
+    if (monthFromQuery === '2') {
+      if (result.month - 1 < 0) {
+        result.month = 59;
+      } else {
+        result.month -= 1;
+      }
+      if (result.year - 1 < 0) {
+        result.year = 59;
+      } else {
+        result.year -= 1;
+      }
+    }
+    if (monthFromQuery !== '2') {
+      if (result.month - 1 < 0) {
+        result.month = 59;
+      } else {
+        result.month -= 1;
+      }
+    }
+  }
+  const si = getOrderedNumberFromTime(Number(hourFromQuery), Number(minuteFromQuery));
+  result.time = getTimeGanziCode(result.day, si);
+  res.json({
+    ok: true,
+    data: {
+      targetDate: date?.datekey,
+      saju: {
+        year: ganziByIndex[result.year],
+        month: ganziByIndex[result.month],
+        day: ganziByIndex[result.day],
+        time: ganziByIndex[result.time]
+      }
     }
   });
 }
