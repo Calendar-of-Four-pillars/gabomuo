@@ -24,8 +24,14 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model Year {
+model SeasonYear {
   id Int @id @default(autoincrement())
   year String @unique
   seasontime Json
+}
+
+model SajuDate {
+  id Int @id @default(autoincrement())
+  datekey String @unique
+  info Json
 }
