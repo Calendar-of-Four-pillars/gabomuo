@@ -12,6 +12,8 @@ datasource db {
   relationMode = "prisma"
 }
 
+
+
 model User {
   id Int @id @default(autoincrement())
   phone Int? @unique
@@ -20,4 +22,16 @@ model User {
   avatar String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model SeasonYear {
+  id Int @id @default(autoincrement())
+  year String @unique
+  seasontime Json
+}
+
+model SajuDate {
+  id Int @id @default(autoincrement())
+  datekey String @unique
+  info Json
 }
