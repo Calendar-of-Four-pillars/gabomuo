@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getOrderedNumberFromTime, getTimeGanziCode, isLastSeason, isNextDay } from 'src/libs/time';
-import { ganziByIndex } from 'src/libs/ganzi';
+import { calTenGodsFromEightWords, ganziByIndexSecond } from 'src/libs/ganzi';
 import client from 'src/libs/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -53,17 +53,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const sizi = getOrderedNumberFromTime(Number(hourFromQuery), Number(minuteFromQuery));
   result.time = getTimeGanziCode(result.day, sizi);
 
+  const sipSinResult = calTenGodsFromEightWords({
+    year: ganziByIndexSecond[result.year],
+    month: ganziByIndexSecond[result.month],
+    day: ganziByIndexSecond[result.day],
+    time: ganziByIndexSecond[result.time]
+  });
+
   if (!nextSeason) {
     res.json({
       ok: true,
       data: {
         targetDate: date?.datekey,
         saju: {
-          year: ganziByIndex[result.year],
-          month: ganziByIndex[result.month],
-          day: ganziByIndex[result.day],
-          time: ganziByIndex[result.time]
-        }
+          year: ganziByIndexSecond[result.year],
+          month: ganziByIndexSecond[result.month],
+          day: ganziByIndexSecond[result.day],
+          time: ganziByIndexSecond[result.time]
+        },
+        sipsin: sipSinResult
       }
     });
     return;
@@ -101,16 +109,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   const si = getOrderedNumberFromTime(Number(hourFromQuery), Number(minuteFromQuery));
   result.time = getTimeGanziCode(result.day, si);
+  const seasonAppliedSipsin = calTenGodsFromEightWords({
+    year: ganziByIndexSecond[result.year],
+    month: ganziByIndexSecond[result.month],
+    day: ganziByIndexSecond[result.day],
+    time: ganziByIndexSecond[result.time]
+  });
+
   res.json({
     ok: true,
     data: {
       targetDate: date?.datekey,
       saju: {
-        year: ganziByIndex[result.year],
-        month: ganziByIndex[result.month],
-        day: ganziByIndex[result.day],
-        time: ganziByIndex[result.time]
-      }
+        year: ganziByIndexSecond[result.year],
+        month: ganziByIndexSecond[result.month],
+        day: ganziByIndexSecond[result.day],
+        time: ganziByIndexSecond[result.time]
+      },
+      sipsin: seasonAppliedSipsin
     }
   });
 }
