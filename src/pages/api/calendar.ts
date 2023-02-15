@@ -16,11 +16,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   });
 
+  const nextSeasonDate = await client.seasonYear.findMany({
+    where: {
+      year: {
+        startsWith: `${yearFromQuery}-${monthFromQuery}-`
+      }
+    }
+  });
+
   const dayOfWeekIndex = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
   const data = month.map((day) => {
     const dayNumber = day.datekey.split('-').pop();
+    const targetMonth = day.datekey.split('-')[1];
     const convertedDay = Object(day);
+
+    if (nextSeasonDate && day.datekey === nextSeasonDate[0].year) {
+      if (targetMonth === '2') {
+        return {
+          day: Number(dayNumber),
+          ganji: ganziByIndex[Number(convertedDay.info?.day as string)],
+          dayOfWeek: dayOfWeekIndex[new Date(day.datekey).getDay()],
+          nextSeason: nextSeasonDate[0].seasontime,
+          nextYear: true
+        };
+      }
+      return {
+        day: Number(dayNumber),
+        ganji: ganziByIndex[Number(convertedDay.info?.day as string)],
+        dayOfWeek: dayOfWeekIndex[new Date(day.datekey).getDay()],
+        nextSeason: nextSeasonDate[0].seasontime
+      };
+    }
 
     return {
       day: Number(dayNumber),
