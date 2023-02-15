@@ -20,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const data = month.map((day) => {
     const dayNumber = day.datekey.split('-').pop();
-
     const convertedDay = Object(day);
 
     return {
