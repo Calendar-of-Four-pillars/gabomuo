@@ -556,7 +556,7 @@ const sipSinCode: { [key: number]: { same: string; diff: string } } = {
   },
   2: {
     same: '편재',
-    diff: '겁재'
+    diff: '정재'
   },
   3: {
     same: '편관',
@@ -592,10 +592,13 @@ const normalizeEightWords = (copiedFourPillars: SajuObjType): EightWordsType => 
     // gan
     entriedValue.forEach(([detailKey, detailValue]) => {
       if (result[detailKey]) {
-        result[detailKey].number =
+        const calGrade =
           detailValue.element - standard < 0
             ? detailValue.element - standard + 5
             : detailValue.element - standard;
+
+        result[detailKey].number = calGrade;
+
         result[detailKey].sipSinNp = detailValue.np;
       }
     });
@@ -634,8 +637,9 @@ const makeSipsinFromEightWords = (normalizedEightWords: EightWordsType) => {
     };
     const entriedGanji = Object.entries(ganji) as Entries<JuWordsType>;
     entriedGanji.forEach(([key, value]) => {
-      ganjiResult[key] =
+      const sipsinResult =
         bornone === value.sipSinNp ? sipSinCode[value.number].same : sipSinCode[value.number].diff;
+      ganjiResult[key] = sipsinResult;
     });
     result[unit] = ganjiResult;
   });
