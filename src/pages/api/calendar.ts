@@ -16,12 +16,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   });
 
-  const dayOfWeekIndex = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+  const dayOfWeekIndex = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
   const data = month.map((day) => {
     const dayNumber = day.datekey.split('-').pop();
 
-    const convertedDay = Object(day)
+    const convertedDay = Object(day);
 
     return {
       day: Number(dayNumber),
