@@ -52,6 +52,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:fb1a6fa1f05845937509ae586032524ac5d5f204409167937196b3bfd7514037677b6b3c887ee3ebc41bb428d48d7306baac9d8a17d816896cece6095e14e29c#npm:18.2.0"],\
             ["request", "npm:2.88.2"],\
+            ["type-fest", "npm:3.5.7"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=d73830"],\
             ["xml-js", "npm:1.6.11"]\
           ],\
@@ -2490,6 +2491,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:fb1a6fa1f05845937509ae586032524ac5d5f204409167937196b3bfd7514037677b6b3c887ee3ebc41bb428d48d7306baac9d8a17d816896cece6095e14e29c#npm:18.2.0"],\
             ["request", "npm:2.88.2"],\
+            ["type-fest", "npm:3.5.7"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=d73830"],\
             ["xml-js", "npm:1.6.11"]\
           ],\
@@ -4440,6 +4442,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/type-fest-npm-0.20.2-b36432617f-4fb3272df2.zip/node_modules/type-fest/",\
           "packageDependencies": [\
             ["type-fest", "npm:0.20.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:3.5.7", {\
+          "packageLocation": "./.yarn/cache/type-fest-npm-3.5.7-24b658cc0a-06358352da.zip/node_modules/type-fest/",\
+          "packageDependencies": [\
+            ["type-fest", "npm:3.5.7"]\
           ],\
           "linkType": "HARD"\
         }]\
