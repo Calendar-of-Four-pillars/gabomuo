@@ -18,6 +18,23 @@ export const authOptions: NextAuthOptions = {
         token.accessToken = account.access_token;
       }
       return token;
+    },
+    async session({ session, token, user }) {
+      console.log('user', user);
+      // Send properties to the client, like an access_token from a provider.
+      session.accessToken = token.accessToken;
+      return session;
+    },
+    async signIn(data) {
+      console.log('sign', data);
+      const isAllowedToSignIn = true;
+      if (isAllowedToSignIn) {
+        return true;
+      }
+      // Return false to display a default error message
+      return false;
+      // Or you can return a URL to redirect to:
+      // return '/unauthorized'
     }
   }
 };
