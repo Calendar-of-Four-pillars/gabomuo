@@ -8,21 +8,109 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url = env("DATABASE_TEST_URL")
   relationMode = "prisma"
 }
 
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
 
 model User {
-  id Int @id @default(autoincrement())
-  phone Int? @unique
-  email String? @unique
-  name String
-  avatar String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String    @id @default(cuid())
+  name          String?
+  email         String   @unique
+  image         String?
+  gender        String?
+  birth_year    Int?
+  birth_month   Int?
+  birth_day     Int?
+  birth_hour    Int?
+  birth_minute  Int?
+  is_moon       Boolean?
+  doubled       Boolean?
+  region        String?
+  saju_year_code Int
+  saju_month_code Int
+  saju_day_code Int
+  saju_time_code Int
+  friends       Friend[]
+  calendars     Calendar[]
+  accounts      Account[]
+  sessions      Session[]
 }
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+
+model Calendar {
+  id  String  @id @default(cuid())
+  userId  String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  key String
+  emotion String
+  title String
+  content String
+  friends Friend[]
+
+  @@index([userId])
+}
+
+model Friend {
+  id  String   @id @default(cuid())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String
+  calendars Calendar[] 
+  name String
+  gender String
+  birth_year Int
+  birth_month Int
+  birth_day Int
+  birth_hour Int
+  birth_minute Int
+  is_moon Boolean
+  doubled Boolean
+  region String
+  saju_year_code Int
+  saju_month_code Int
+  saju_day_code Int
+  saju_time_code Int
+
+  @@index([userId])
+}
+
 
 model SeasonYear {
   id Int @id @default(autoincrement())
