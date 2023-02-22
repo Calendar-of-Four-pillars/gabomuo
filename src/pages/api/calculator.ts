@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { getOrderedNumberFromTime, getTimeGanziCode, isLastSeason, isNextDay } from 'src/libs/time';
 import { calTenGodsFromEightWords, ganziByIndexSecond } from 'src/libs/ganzi';
 import client from 'src/libs/client';
+import { twelveMovement } from 'src/libs/calculatedValue';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const yearFromQuery = req.query.year as string;
@@ -71,7 +72,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           day: ganziByIndexSecond[result.day],
           time: ganziByIndexSecond[result.time]
         },
-        sipsin: sipSinResult
+        sipsin: sipSinResult,
+        luck: {
+          year: twelveMovement[ganziByIndexSecond[result.year].gan.name][
+            ganziByIndexSecond[result.year].ji.name
+          ],
+          month:
+            twelveMovement[ganziByIndexSecond[result.month].gan.name][
+              ganziByIndexSecond[result.month].ji.name
+            ],
+          day: twelveMovement[ganziByIndexSecond[result.day].gan.name][
+            ganziByIndexSecond[result.day].ji.name
+          ],
+          time: twelveMovement[ganziByIndexSecond[result.time].gan.name][
+            ganziByIndexSecond[result.time].ji.name
+          ]
+        }
       }
     });
     return;
@@ -126,7 +142,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         day: ganziByIndexSecond[result.day],
         time: ganziByIndexSecond[result.time]
       },
-      sipsin: seasonAppliedSipsin
+      sipsin: seasonAppliedSipsin,
+      luck: {
+        year: twelveMovement[ganziByIndexSecond[result.year].gan.name][
+          ganziByIndexSecond[result.year].ji.name
+        ],
+        month:
+          twelveMovement[ganziByIndexSecond[result.month].gan.name][
+            ganziByIndexSecond[result.month].ji.name
+          ],
+        day: twelveMovement[ganziByIndexSecond[result.day].gan.name][
+          ganziByIndexSecond[result.day].ji.name
+        ],
+        time: twelveMovement[ganziByIndexSecond[result.time].gan.name][
+          ganziByIndexSecond[result.time].ji.name
+        ]
+      }
     }
   });
 }
