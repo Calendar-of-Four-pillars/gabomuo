@@ -4,8 +4,8 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 const Login: NextPage = () => {
   const result = useSession();
 
-  console.log('session', result);
   if (result.data) {
+    console.log('session', result);
     return (
       <>
         Signed in as {result.data.user.email} <br />
