@@ -1,9 +1,12 @@
 /* eslint-disable no-param-reassign */
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import nextAuth, { NextAuthOptions } from 'next-auth';
 import NaverProvider from 'next-auth/providers/naver';
+import prisma from 'src/libs/client';
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
+  adapter: PrismaAdapter(prisma),
   providers: [
     NaverProvider({
       clientId: process.env.NAVER_ID as string,
@@ -20,13 +23,11 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      console.log('user', user);
       // Send properties to the client, like an access_token from a provider.
       session.accessToken = token.accessToken;
       return session;
     },
     async signIn(data) {
-      console.log('sign', data);
       const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         return true;
