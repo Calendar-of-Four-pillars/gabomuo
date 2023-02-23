@@ -5,7 +5,6 @@ const Login: NextPage = () => {
   const result = useSession();
 
   if (result.data) {
-    console.log('session', result);
     return (
       <>
         Signed in as {result.data.user.email} <br />
