@@ -190,7 +190,8 @@ exports.Prisma.UserScalarFieldEnum = makeEnum({
   saju_year_code: 'saju_year_code',
   saju_month_code: 'saju_month_code',
   saju_day_code: 'saju_day_code',
-  saju_time_code: 'saju_time_code'
+  saju_time_code: 'saju_time_code',
+  emailVerified: 'emailVerified'
 });
 
 exports.Prisma.VerificationTokenScalarFieldEnum = makeEnum({

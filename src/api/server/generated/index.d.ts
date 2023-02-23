@@ -51,6 +51,7 @@ export type User = {
   saju_month_code: number | null
   saju_day_code: number | null
   saju_time_code: number | null
+  emailVerified: Date | null
 }
 
 /**
@@ -2179,6 +2180,7 @@ export namespace Prisma {
     saju_month_code: number | null
     saju_day_code: number | null
     saju_time_code: number | null
+    emailVerified: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2199,6 +2201,7 @@ export namespace Prisma {
     saju_month_code: number | null
     saju_day_code: number | null
     saju_time_code: number | null
+    emailVerified: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2219,6 +2222,7 @@ export namespace Prisma {
     saju_month_code: number
     saju_day_code: number
     saju_time_code: number
+    emailVerified: number
     _all: number
   }
 
@@ -2265,6 +2269,7 @@ export namespace Prisma {
     saju_month_code?: true
     saju_day_code?: true
     saju_time_code?: true
+    emailVerified?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2285,6 +2290,7 @@ export namespace Prisma {
     saju_month_code?: true
     saju_day_code?: true
     saju_time_code?: true
+    emailVerified?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2305,6 +2311,7 @@ export namespace Prisma {
     saju_month_code?: true
     saju_day_code?: true
     saju_time_code?: true
+    emailVerified?: true
     _all?: true
   }
 
@@ -2413,6 +2420,7 @@ export namespace Prisma {
     saju_month_code: number | null
     saju_day_code: number | null
     saju_time_code: number | null
+    emailVerified: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2452,6 +2460,7 @@ export namespace Prisma {
     saju_month_code?: boolean
     saju_day_code?: boolean
     saju_time_code?: boolean
+    emailVerified?: boolean
     friends?: boolean | User$friendsArgs
     calendars?: boolean | User$calendarsArgs
     accounts?: boolean | User$accountsArgs
@@ -9128,7 +9137,8 @@ export namespace Prisma {
     saju_year_code: 'saju_year_code',
     saju_month_code: 'saju_month_code',
     saju_day_code: 'saju_day_code',
-    saju_time_code: 'saju_time_code'
+    saju_time_code: 'saju_time_code',
+    emailVerified: 'emailVerified'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9247,6 +9257,7 @@ export namespace Prisma {
     saju_month_code?: IntNullableFilter | number | null
     saju_day_code?: IntNullableFilter | number | null
     saju_time_code?: IntNullableFilter | number | null
+    emailVerified?: DateTimeNullableFilter | Date | string | null
     friends?: FriendListRelationFilter
     calendars?: CalendarListRelationFilter
     accounts?: AccountListRelationFilter
@@ -9271,6 +9282,7 @@ export namespace Prisma {
     saju_month_code?: SortOrder
     saju_day_code?: SortOrder
     saju_time_code?: SortOrder
+    emailVerified?: SortOrder
     friends?: FriendOrderByRelationAggregateInput
     calendars?: CalendarOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
@@ -9300,6 +9312,7 @@ export namespace Prisma {
     saju_month_code?: SortOrder
     saju_day_code?: SortOrder
     saju_time_code?: SortOrder
+    emailVerified?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -9328,6 +9341,7 @@ export namespace Prisma {
     saju_month_code?: IntNullableWithAggregatesFilter | number | null
     saju_day_code?: IntNullableWithAggregatesFilter | number | null
     saju_time_code?: IntNullableWithAggregatesFilter | number | null
+    emailVerified?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
   export type SessionWhereInput = {
@@ -9762,6 +9776,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     calendars?: CalendarCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -9786,6 +9801,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -9810,6 +9826,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     calendars?: CalendarUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -9834,6 +9851,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -9858,6 +9876,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -9878,6 +9897,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -9898,6 +9918,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type SessionCreateInput = {
@@ -10427,6 +10448,17 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter | boolean | null
   }
 
+  export type DateTimeNullableFilter = {
+    equals?: Date | string | null
+    in?: Enumerable<Date> | Enumerable<string> | null
+    notIn?: Enumerable<Date> | Enumerable<string> | null
+    lt?: Date | string
+    lte?: Date | string
+    gt?: Date | string
+    gte?: Date | string
+    not?: NestedDateTimeNullableFilter | Date | string | null
+  }
+
   export type FriendListRelationFilter = {
     every?: FriendWhereInput
     some?: FriendWhereInput
@@ -10485,6 +10517,7 @@ export namespace Prisma {
     saju_month_code?: SortOrder
     saju_day_code?: SortOrder
     saju_time_code?: SortOrder
+    emailVerified?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -10517,6 +10550,7 @@ export namespace Prisma {
     saju_month_code?: SortOrder
     saju_day_code?: SortOrder
     saju_time_code?: SortOrder
+    emailVerified?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -10537,6 +10571,7 @@ export namespace Prisma {
     saju_month_code?: SortOrder
     saju_day_code?: SortOrder
     saju_time_code?: SortOrder
+    emailVerified?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -10557,6 +10592,20 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter
     _min?: NestedBoolNullableFilter
     _max?: NestedBoolNullableFilter
+  }
+
+  export type DateTimeNullableWithAggregatesFilter = {
+    equals?: Date | string | null
+    in?: Enumerable<Date> | Enumerable<string> | null
+    notIn?: Enumerable<Date> | Enumerable<string> | null
+    lt?: Date | string
+    lte?: Date | string
+    gt?: Date | string
+    gte?: Date | string
+    not?: NestedDateTimeNullableWithAggregatesFilter | Date | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedDateTimeNullableFilter
+    _max?: NestedDateTimeNullableFilter
   }
 
   export type DateTimeFilter = {
@@ -10961,6 +11010,10 @@ export namespace Prisma {
     set?: boolean | null
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type FriendUpdateManyWithoutUserNestedInput = {
     create?: XOR<Enumerable<FriendCreateWithoutUserInput>, Enumerable<FriendUncheckedCreateWithoutUserInput>>
     connectOrCreate?: Enumerable<FriendCreateOrConnectWithoutUserInput>
@@ -11323,12 +11376,37 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter | boolean | null
   }
 
+  export type NestedDateTimeNullableFilter = {
+    equals?: Date | string | null
+    in?: Enumerable<Date> | Enumerable<string> | null
+    notIn?: Enumerable<Date> | Enumerable<string> | null
+    lt?: Date | string
+    lte?: Date | string
+    gt?: Date | string
+    gte?: Date | string
+    not?: NestedDateTimeNullableFilter | Date | string | null
+  }
+
   export type NestedBoolNullableWithAggregatesFilter = {
     equals?: boolean | null
     not?: NestedBoolNullableWithAggregatesFilter | boolean | null
     _count?: NestedIntNullableFilter
     _min?: NestedBoolNullableFilter
     _max?: NestedBoolNullableFilter
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter = {
+    equals?: Date | string | null
+    in?: Enumerable<Date> | Enumerable<string> | null
+    notIn?: Enumerable<Date> | Enumerable<string> | null
+    lt?: Date | string
+    lte?: Date | string
+    gt?: Date | string
+    gte?: Date | string
+    not?: NestedDateTimeNullableWithAggregatesFilter | Date | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedDateTimeNullableFilter
+    _max?: NestedDateTimeNullableFilter
   }
 
   export type NestedDateTimeFilter = {
@@ -11436,6 +11514,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     calendars?: CalendarCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -11459,6 +11538,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -11492,6 +11572,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     calendars?: CalendarUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -11515,6 +11596,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -11800,6 +11882,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     calendars?: CalendarCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -11823,6 +11906,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -11856,6 +11940,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     calendars?: CalendarUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -11879,6 +11964,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -11902,6 +11988,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -11925,6 +12012,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -12001,6 +12089,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -12024,6 +12113,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -12063,6 +12153,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     calendars?: CalendarCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -12086,6 +12177,7 @@ export namespace Prisma {
     saju_month_code?: number | null
     saju_day_code?: number | null
     saju_time_code?: number | null
+    emailVerified?: Date | string | null
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -12142,6 +12234,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     calendars?: CalendarUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -12165,6 +12258,7 @@ export namespace Prisma {
     saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
     saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
