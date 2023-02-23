@@ -15,6 +15,7 @@ export const authOptions: NextAuthOptions = {
     })
     // ...add more providers here
   ],
+  secret: process.env.SECRET,
   callbacks: {
     async signIn(data) {
       if (data.account?.provider === 'naver') {
