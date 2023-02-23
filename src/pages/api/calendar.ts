@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import client from 'src/libs/client';
 import { ganziByIndex } from 'src/libs/ganzi';
 import _ from 'lodash';
+import withHandler from 'src/libs/server/withHandler';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const thisYear = new Date().getUTCFullYear();
   const thisMonth = new Date().getUTCMonth();
   const yearFromQuery = (req.query.year as string) ?? thisYear;
@@ -64,3 +65,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     data: sortedData
   });
 }
+
+export default withHandler({ method: 'GET', handler });
