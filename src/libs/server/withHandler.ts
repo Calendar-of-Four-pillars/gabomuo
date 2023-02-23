@@ -11,7 +11,7 @@ export interface ResponseType {
 }
 
 interface ConfigType {
-  method: 'GET' | 'POST' | 'DELETE';
+  method: 'GET' | 'POST' | 'DELETE' | 'PUT';
   handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
   isPrivate?: boolean;
 }

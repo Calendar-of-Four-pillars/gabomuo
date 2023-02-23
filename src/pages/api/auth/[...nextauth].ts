@@ -17,9 +17,10 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn(data) {
-      console.log('data', data);
       if (data.account?.provider === 'naver') {
-        const { gender, birthday, birthyear } = data.profile?.response;
+        const {
+          response: { gender, birthday, birthyear }
+        } = data.profile as { response: { gender: string; birthday: string; birthyear: string } };
         const convertedForm = {
           gender: gender ?? null,
           birth_year: +birthyear ?? null,
@@ -34,7 +35,6 @@ export const authOptions: NextAuthOptions = {
             }
           });
         } catch (error) {
-          console.log(error);
           return false;
         }
       }
