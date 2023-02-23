@@ -4,8 +4,9 @@ import { getOrderedNumberFromTime, getTimeGanziCode, isLastSeason, isNextDay } f
 import { calTenGodsFromEightWords, ganziByIndexSecond } from 'src/libs/ganzi';
 import client from 'src/libs/client';
 import { twelveMovement } from 'src/libs/calculatedValue';
+import withHandler from 'src/libs/server/withHandler';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const yearFromQuery = req.query.year as string;
   const monthFromQuery = req.query.month as string;
   const dayFromQuery = req.query.day as string;
@@ -161,3 +162,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   });
 }
+
+export default withHandler({ method: 'GET', handler });
