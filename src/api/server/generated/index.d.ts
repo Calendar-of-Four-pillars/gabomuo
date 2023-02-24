@@ -47,10 +47,6 @@ export type User = {
   is_moon: boolean | null
   doubled: boolean | null
   region: string | null
-  saju_year_code: number | null
-  saju_month_code: number | null
-  saju_day_code: number | null
-  saju_time_code: number | null
   emailVerified: Date | null
 }
 
@@ -2144,10 +2140,6 @@ export namespace Prisma {
     birth_day: number | null
     birth_hour: number | null
     birth_minute: number | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
   }
 
   export type UserSumAggregateOutputType = {
@@ -2156,10 +2148,6 @@ export namespace Prisma {
     birth_day: number | null
     birth_hour: number | null
     birth_minute: number | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -2176,10 +2164,6 @@ export namespace Prisma {
     is_moon: boolean | null
     doubled: boolean | null
     region: string | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
     emailVerified: Date | null
   }
 
@@ -2197,10 +2181,6 @@ export namespace Prisma {
     is_moon: boolean | null
     doubled: boolean | null
     region: string | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
     emailVerified: Date | null
   }
 
@@ -2218,10 +2198,6 @@ export namespace Prisma {
     is_moon: number
     doubled: number
     region: number
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
     emailVerified: number
     _all: number
   }
@@ -2233,10 +2209,6 @@ export namespace Prisma {
     birth_day?: true
     birth_hour?: true
     birth_minute?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
   }
 
   export type UserSumAggregateInputType = {
@@ -2245,10 +2217,6 @@ export namespace Prisma {
     birth_day?: true
     birth_hour?: true
     birth_minute?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -2265,10 +2233,6 @@ export namespace Prisma {
     is_moon?: true
     doubled?: true
     region?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
     emailVerified?: true
   }
 
@@ -2286,10 +2250,6 @@ export namespace Prisma {
     is_moon?: true
     doubled?: true
     region?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
     emailVerified?: true
   }
 
@@ -2307,10 +2267,6 @@ export namespace Prisma {
     is_moon?: true
     doubled?: true
     region?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
     emailVerified?: true
     _all?: true
   }
@@ -2416,10 +2372,6 @@ export namespace Prisma {
     is_moon: boolean | null
     doubled: boolean | null
     region: string | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
     emailVerified: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
@@ -2456,10 +2408,6 @@ export namespace Prisma {
     is_moon?: boolean
     doubled?: boolean
     region?: boolean
-    saju_year_code?: boolean
-    saju_month_code?: boolean
-    saju_day_code?: boolean
-    saju_time_code?: boolean
     emailVerified?: boolean
     friends?: boolean | User$friendsArgs
     calendars?: boolean | User$calendarsArgs
@@ -9134,10 +9082,6 @@ export namespace Prisma {
     is_moon: 'is_moon',
     doubled: 'doubled',
     region: 'region',
-    saju_year_code: 'saju_year_code',
-    saju_month_code: 'saju_month_code',
-    saju_day_code: 'saju_day_code',
-    saju_time_code: 'saju_time_code',
     emailVerified: 'emailVerified'
   };
 
@@ -9253,10 +9197,6 @@ export namespace Prisma {
     is_moon?: BoolNullableFilter | boolean | null
     doubled?: BoolNullableFilter | boolean | null
     region?: StringNullableFilter | string | null
-    saju_year_code?: IntNullableFilter | number | null
-    saju_month_code?: IntNullableFilter | number | null
-    saju_day_code?: IntNullableFilter | number | null
-    saju_time_code?: IntNullableFilter | number | null
     emailVerified?: DateTimeNullableFilter | Date | string | null
     friends?: FriendListRelationFilter
     calendars?: CalendarListRelationFilter
@@ -9278,10 +9218,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
     emailVerified?: SortOrder
     friends?: FriendOrderByRelationAggregateInput
     calendars?: CalendarOrderByRelationAggregateInput
@@ -9308,10 +9244,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
     emailVerified?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
@@ -9337,10 +9269,6 @@ export namespace Prisma {
     is_moon?: BoolNullableWithAggregatesFilter | boolean | null
     doubled?: BoolNullableWithAggregatesFilter | boolean | null
     region?: StringNullableWithAggregatesFilter | string | null
-    saju_year_code?: IntNullableWithAggregatesFilter | number | null
-    saju_month_code?: IntNullableWithAggregatesFilter | number | null
-    saju_day_code?: IntNullableWithAggregatesFilter | number | null
-    saju_time_code?: IntNullableWithAggregatesFilter | number | null
     emailVerified?: DateTimeNullableWithAggregatesFilter | Date | string | null
   }
 
@@ -9772,10 +9700,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     calendars?: CalendarCreateNestedManyWithoutUserInput
@@ -9797,10 +9721,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
@@ -9822,10 +9742,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     calendars?: CalendarUpdateManyWithoutUserNestedInput
@@ -9847,10 +9763,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
@@ -9872,10 +9784,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
   }
 
@@ -9893,10 +9801,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -9914,10 +9818,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -10513,10 +10413,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
     emailVerified?: SortOrder
   }
 
@@ -10526,10 +10422,6 @@ export namespace Prisma {
     birth_day?: SortOrder
     birth_hour?: SortOrder
     birth_minute?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -10546,10 +10438,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
     emailVerified?: SortOrder
   }
 
@@ -10567,10 +10455,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
     emailVerified?: SortOrder
   }
 
@@ -10580,10 +10464,6 @@ export namespace Prisma {
     birth_day?: SortOrder
     birth_hour?: SortOrder
     birth_minute?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type BoolNullableWithAggregatesFilter = {
@@ -11510,10 +11390,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     calendars?: CalendarCreateNestedManyWithoutUserInput
@@ -11534,10 +11410,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
@@ -11568,10 +11440,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     calendars?: CalendarUpdateManyWithoutUserNestedInput
@@ -11592,10 +11460,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
@@ -11878,10 +11742,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     calendars?: CalendarCreateNestedManyWithoutUserInput
@@ -11902,10 +11762,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
@@ -11936,10 +11792,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     calendars?: CalendarUpdateManyWithoutUserNestedInput
@@ -11960,10 +11812,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
@@ -11984,10 +11832,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -12008,10 +11852,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     friends?: FriendUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -12085,10 +11925,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -12109,10 +11945,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     friends?: FriendUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -12149,10 +11981,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     calendars?: CalendarCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -12173,10 +12001,6 @@ export namespace Prisma {
     is_moon?: boolean | null
     doubled?: boolean | null
     region?: string | null
-    saju_year_code?: number | null
-    saju_month_code?: number | null
-    saju_day_code?: number | null
-    saju_time_code?: number | null
     emailVerified?: Date | string | null
     calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -12230,10 +12054,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     calendars?: CalendarUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -12254,10 +12074,6 @@ export namespace Prisma {
     is_moon?: NullableBoolFieldUpdateOperationsInput | boolean | null
     doubled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     region?: NullableStringFieldUpdateOperationsInput | string | null
-    saju_year_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_month_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_day_code?: NullableIntFieldUpdateOperationsInput | number | null
-    saju_time_code?: NullableIntFieldUpdateOperationsInput | number | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput

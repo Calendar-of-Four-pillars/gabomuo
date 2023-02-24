@@ -46,10 +46,6 @@ model User {
   is_moon       Boolean?
   doubled       Boolean?
   region        String?
-  saju_year_code Int?
-  saju_month_code Int?
-  saju_day_code Int?
-  saju_time_code Int?
   emailVerified DateTime?
   friends       Friend[]
   calendars     Calendar[]
