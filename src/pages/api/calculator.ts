@@ -75,17 +75,17 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
         sipsin: sipSinResult,
         luck: {
-          year: twelveMovement[ganziByIndexSecond[result.year].gan.name][
+          year: twelveMovement[ganziByIndexSecond[result.day].gan.name][
             ganziByIndexSecond[result.year].ji.name
           ],
           month:
-            twelveMovement[ganziByIndexSecond[result.month].gan.name][
+            twelveMovement[ganziByIndexSecond[result.day].gan.name][
               ganziByIndexSecond[result.month].ji.name
             ],
           day: twelveMovement[ganziByIndexSecond[result.day].gan.name][
             ganziByIndexSecond[result.day].ji.name
           ],
-          time: twelveMovement[ganziByIndexSecond[result.time].gan.name][
+          time: twelveMovement[ganziByIndexSecond[result.day].gan.name][
             ganziByIndexSecond[result.time].ji.name
           ]
         }
