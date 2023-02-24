@@ -125,11 +125,7 @@ exports.Prisma.FriendScalarFieldEnum = makeEnum({
   birth_minute: 'birth_minute',
   is_moon: 'is_moon',
   doubled: 'doubled',
-  region: 'region',
-  saju_year_code: 'saju_year_code',
-  saju_month_code: 'saju_month_code',
-  saju_day_code: 'saju_day_code',
-  saju_time_code: 'saju_time_code'
+  region: 'region'
 });
 
 exports.Prisma.JsonNullValueFilter = makeEnum({

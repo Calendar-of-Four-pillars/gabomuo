@@ -101,10 +101,6 @@ export type Friend = {
   is_moon: boolean
   doubled: boolean
   region: string
-  saju_year_code: number
-  saju_month_code: number
-  saju_day_code: number
-  saju_time_code: number
 }
 
 /**
@@ -6058,10 +6054,6 @@ export namespace Prisma {
     birth_day: number | null
     birth_hour: number | null
     birth_minute: number | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
   }
 
   export type FriendSumAggregateOutputType = {
@@ -6070,10 +6062,6 @@ export namespace Prisma {
     birth_day: number | null
     birth_hour: number | null
     birth_minute: number | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
   }
 
   export type FriendMinAggregateOutputType = {
@@ -6089,10 +6077,6 @@ export namespace Prisma {
     is_moon: boolean | null
     doubled: boolean | null
     region: string | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
   }
 
   export type FriendMaxAggregateOutputType = {
@@ -6108,10 +6092,6 @@ export namespace Prisma {
     is_moon: boolean | null
     doubled: boolean | null
     region: string | null
-    saju_year_code: number | null
-    saju_month_code: number | null
-    saju_day_code: number | null
-    saju_time_code: number | null
   }
 
   export type FriendCountAggregateOutputType = {
@@ -6127,10 +6107,6 @@ export namespace Prisma {
     is_moon: number
     doubled: number
     region: number
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
     _all: number
   }
 
@@ -6141,10 +6117,6 @@ export namespace Prisma {
     birth_day?: true
     birth_hour?: true
     birth_minute?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
   }
 
   export type FriendSumAggregateInputType = {
@@ -6153,10 +6125,6 @@ export namespace Prisma {
     birth_day?: true
     birth_hour?: true
     birth_minute?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
   }
 
   export type FriendMinAggregateInputType = {
@@ -6172,10 +6140,6 @@ export namespace Prisma {
     is_moon?: true
     doubled?: true
     region?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
   }
 
   export type FriendMaxAggregateInputType = {
@@ -6191,10 +6155,6 @@ export namespace Prisma {
     is_moon?: true
     doubled?: true
     region?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
   }
 
   export type FriendCountAggregateInputType = {
@@ -6210,10 +6170,6 @@ export namespace Prisma {
     is_moon?: true
     doubled?: true
     region?: true
-    saju_year_code?: true
-    saju_month_code?: true
-    saju_day_code?: true
-    saju_time_code?: true
     _all?: true
   }
 
@@ -6317,10 +6273,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
     _count: FriendCountAggregateOutputType | null
     _avg: FriendAvgAggregateOutputType | null
     _sum: FriendSumAggregateOutputType | null
@@ -6357,10 +6309,6 @@ export namespace Prisma {
     is_moon?: boolean
     doubled?: boolean
     region?: boolean
-    saju_year_code?: boolean
-    saju_month_code?: boolean
-    saju_day_code?: boolean
-    saju_time_code?: boolean
     _count?: boolean | FriendCountOutputTypeArgs
   }
 
@@ -8996,11 +8944,7 @@ export namespace Prisma {
     birth_minute: 'birth_minute',
     is_moon: 'is_moon',
     doubled: 'doubled',
-    region: 'region',
-    saju_year_code: 'saju_year_code',
-    saju_month_code: 'saju_month_code',
-    saju_day_code: 'saju_day_code',
-    saju_time_code: 'saju_time_code'
+    region: 'region'
   };
 
   export type FriendScalarFieldEnum = (typeof FriendScalarFieldEnum)[keyof typeof FriendScalarFieldEnum]
@@ -9425,10 +9369,6 @@ export namespace Prisma {
     is_moon?: BoolFilter | boolean
     doubled?: BoolFilter | boolean
     region?: StringFilter | string
-    saju_year_code?: IntFilter | number
-    saju_month_code?: IntFilter | number
-    saju_day_code?: IntFilter | number
-    saju_time_code?: IntFilter | number
   }
 
   export type FriendOrderByWithRelationInput = {
@@ -9446,10 +9386,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type FriendWhereUniqueInput = {
@@ -9469,10 +9405,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
     _count?: FriendCountOrderByAggregateInput
     _avg?: FriendAvgOrderByAggregateInput
     _max?: FriendMaxOrderByAggregateInput
@@ -9496,10 +9428,6 @@ export namespace Prisma {
     is_moon?: BoolWithAggregatesFilter | boolean
     doubled?: BoolWithAggregatesFilter | boolean
     region?: StringWithAggregatesFilter | string
-    saju_year_code?: IntWithAggregatesFilter | number
-    saju_month_code?: IntWithAggregatesFilter | number
-    saju_day_code?: IntWithAggregatesFilter | number
-    saju_time_code?: IntWithAggregatesFilter | number
   }
 
   export type SeasonYearWhereInput = {
@@ -9991,10 +9919,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendUncheckedCreateInput = {
@@ -10011,10 +9935,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendUpdateInput = {
@@ -10031,10 +9951,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendUncheckedUpdateInput = {
@@ -10051,10 +9967,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendCreateManyInput = {
@@ -10070,10 +9982,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendUpdateManyMutationInput = {
@@ -10088,10 +9996,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendUncheckedUpdateManyInput = {
@@ -10107,10 +10011,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type SeasonYearCreateInput = {
@@ -10613,10 +10513,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type FriendAvgOrderByAggregateInput = {
@@ -10625,10 +10521,6 @@ export namespace Prisma {
     birth_day?: SortOrder
     birth_hour?: SortOrder
     birth_minute?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type FriendMaxOrderByAggregateInput = {
@@ -10644,10 +10536,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type FriendMinOrderByAggregateInput = {
@@ -10663,10 +10551,6 @@ export namespace Prisma {
     is_moon?: SortOrder
     doubled?: SortOrder
     region?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type FriendSumOrderByAggregateInput = {
@@ -10675,10 +10559,6 @@ export namespace Prisma {
     birth_day?: SortOrder
     birth_hour?: SortOrder
     birth_minute?: SortOrder
-    saju_year_code?: SortOrder
-    saju_month_code?: SortOrder
-    saju_day_code?: SortOrder
-    saju_time_code?: SortOrder
   }
 
   export type IntWithAggregatesFilter = {
@@ -11479,10 +11359,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendUncheckedCreateWithoutUserInput = {
@@ -11498,10 +11374,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendCreateOrConnectWithoutUserInput = {
@@ -11634,10 +11506,6 @@ export namespace Prisma {
     is_moon?: BoolFilter | boolean
     doubled?: BoolFilter | boolean
     region?: StringFilter | string
-    saju_year_code?: IntFilter | number
-    saju_month_code?: IntFilter | number
-    saju_day_code?: IntFilter | number
-    saju_time_code?: IntFilter | number
   }
 
   export type CalendarUpsertWithWhereUniqueWithoutUserInput = {
@@ -11876,10 +11744,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendUncheckedCreateWithoutCalendarsInput = {
@@ -11895,10 +11759,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type FriendCreateOrConnectWithoutCalendarsInput = {
@@ -12108,10 +11968,6 @@ export namespace Prisma {
     is_moon: boolean
     doubled: boolean
     region: string
-    saju_year_code: number
-    saju_month_code: number
-    saju_day_code: number
-    saju_time_code: number
   }
 
   export type CalendarCreateManyUserInput = {
@@ -12155,10 +12011,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendUncheckedUpdateWithoutUserInput = {
@@ -12174,10 +12026,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendUncheckedUpdateManyWithoutFriendsInput = {
@@ -12192,10 +12040,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type CalendarUpdateWithoutUserInput = {
@@ -12297,10 +12141,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type FriendUncheckedUpdateWithoutCalendarsInput = {
@@ -12316,10 +12156,6 @@ export namespace Prisma {
     is_moon?: BoolFieldUpdateOperationsInput | boolean
     doubled?: BoolFieldUpdateOperationsInput | boolean
     region?: StringFieldUpdateOperationsInput | string
-    saju_year_code?: IntFieldUpdateOperationsInput | number
-    saju_month_code?: IntFieldUpdateOperationsInput | number
-    saju_day_code?: IntFieldUpdateOperationsInput | number
-    saju_time_code?: IntFieldUpdateOperationsInput | number
   }
 
   export type CalendarUpdateWithoutFriendsInput = {
