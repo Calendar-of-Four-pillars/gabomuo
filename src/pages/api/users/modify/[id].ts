@@ -6,8 +6,6 @@ import withHandler, { ResponseType } from 'src/libs/server/withHandler';
 import { authOptions } from '../../auth/[...nextauth]';
 
 async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
-  //   const session = await getServerSession(req, res, authOptions);
-
   const {
     body: {
       name,
