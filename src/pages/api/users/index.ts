@@ -16,6 +16,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
   const profiles = await client.friend.findMany({
     where: {
       userId: session.id as string
+    },
+    include: {
+      calendars: true
     }
   });
 

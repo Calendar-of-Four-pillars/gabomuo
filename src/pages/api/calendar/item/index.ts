@@ -20,6 +20,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
         where: {
           key: `${yearFromQuery}-${monthFromQuery}-${dayFromQuery}` as string,
           userId: session?.id
+        },
+        include: {
+          friends: true
         }
       });
 

@@ -18,6 +18,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
     const profile = await client.friend.findUnique({
       where: {
         id: req.query.id as string
+      },
+      include: {
+        calendars: true
       }
     });
 

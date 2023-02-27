@@ -9,7 +9,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
   const session = await getServerSession(req, res, authOptions);
 
   const {
-    body: { key, emotion, title, content }
+    body: { key, emotion, title, content, friends }
   } = req;
 
   try {
@@ -23,7 +23,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
           connect: {
             email: session?.user.email
           }
+        },
+        friends: {
+          connect: friends
         }
+      },
+      include: {
+        friends: true
       }
     });
 

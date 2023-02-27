@@ -8,7 +8,7 @@ import withHandler, { ResponseType } from 'src/libs/server/withHandler';
 async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
   const session = await getServerSession(req, res, authOptions);
   const {
-    body: { emotion, title, content }
+    body: { emotion, title, content, friends }
   } = req;
 
   try {
@@ -37,7 +37,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
       data: {
         emotion,
         title,
-        content
+        content,
+        friends: {
+          connect: friends
+        }
+      },
+      include: {
+        friends: true
       }
     });
 

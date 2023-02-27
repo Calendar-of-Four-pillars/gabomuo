@@ -9,6 +9,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
   const profile = await client.user.findUnique({
     where: {
       email: session?.user.email
+    },
+    include: {
+      friends: true,
+      calendars: true
     }
   });
 
