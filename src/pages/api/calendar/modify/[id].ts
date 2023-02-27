@@ -32,7 +32,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
   }
 
   try {
-    const calendar = await client.calendar.update({
+    await client.calendar.update({
       where: { id: req.query.id as string },
       data: {
         emotion,
@@ -43,7 +43,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
 
     res.json({
       ok: true,
-      calendar
+      msg: '업데이트 완료'
     });
   } catch (error) {
     res.json({
