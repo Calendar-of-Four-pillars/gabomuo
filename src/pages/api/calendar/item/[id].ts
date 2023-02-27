@@ -12,6 +12,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
     const calendar = await client.calendar.findUnique({
       where: {
         id: req.query.id as string
+      },
+      include: {
+        friends: true
       }
     });
 
