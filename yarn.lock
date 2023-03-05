@@ -2289,6 +2289,7 @@ __metadata:
     prisma: 4.10.1
     react: 18.2.0
     react-dom: 18.2.0
+    react-hook-form: ^7.43.4
     recoil: ^0.7.7
     request: ^2.88.2
     type-fest: ^3.5.7
@@ -3719,6 +3720,15 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.43.4":
+  version: 7.43.4
+  resolution: "react-hook-form@npm:7.43.4"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 5ae2672951a0f22420413aa7dcbe185831be5b506d464e2b60d22ba969fe04e5a176dc0c42788098f72a2a7bfac5c7b3ddcdf453eb1fac6f72fd88e84243652f
   languageName: node
   linkType: hard
 
