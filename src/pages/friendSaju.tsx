@@ -1,91 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React from 'react';
 import { useRecoilState } from 'recoil';
-import { friend, friend2 } from 'src/store/friendStore';
+import { friend } from 'src/store/friendStore';
+import { getGanjiColorAndChinese } from './util';
 
 const FriendSaju = () => {
   const [person, setPerson] = useRecoilState(friend);
-  const { year, month, day, time } = person.saju;
-  console.log('dd');
-  const getGanjiColorAndChinese = (ganji) => {
-    if (ganji === '갑') {
-      return { chinese: '甲', color: '#00B050' };
-    }
-    if (ganji === '을') {
-      return { chinese: '乙', color: '#00B050' };
-    }
-    if (ganji === '병') {
-      return { chinese: '丙', color: '#F35252' };
-    }
-    if (ganji === '정') {
-      return { chinese: '丁', color: '#F35252' };
-    }
-    if (ganji === '무') {
-      return { chinese: '戊', color: '#F8DA4A' };
-    }
-    if (ganji === '기') {
-      return { chinese: '己', color: '#F8DA4A' };
-    }
-    if (ganji === '경') {
-      return { chinese: '庚', color: '#FFF' };
-    }
-    if (ganji === '신') {
-      return { chinese: '辛', color: '#FFF' };
-    }
-    if (ganji === '임') {
-      return { chinese: '壬', color: '#37393D' };
-    }
-    if (ganji === '계') {
-      return { chinese: '癸', color: '#37393D' };
-    }
-    if (ganji === '자') {
-      return { chinese: '子', color: '#37393D' };
-    }
-    if (ganji === '축') {
-      return { chinese: '丑', color: '#F8DA4A' };
-    }
-    if (ganji === '인') {
-      return { chinese: '寅', color: '#00B050' };
-    }
-    if (ganji === '묘') {
-      return { chinese: '卯', color: '#00B050' };
-    }
-    if (ganji === '진') {
-      return { chinese: '辰', color: '#F8DA4A' };
-    }
-    if (ganji === '사') {
-      return { chinese: '巳', color: '#F35252' };
-    }
-    if (ganji === '오') {
-      return { chinese: '午', color: '#F35252' };
-    }
-    if (ganji === '미') {
-      return { chinese: '未', color: '#F8DA4A' };
-    }
-    if (ganji === '신') {
-      return { chinese: '申', color: '#FFF' };
-    }
-    if (ganji === '유') {
-      return { chinese: '酉', color: '#FFF' };
-    }
-    if (ganji === '술') {
-      return { chinese: '戌', color: '#F8DA4A' };
-    }
-    if (ganji === '해') {
-      return { chinese: '亥', color: '#37393D' };
-    }
-  };
+  const { year, month, day, time } = person?.saju;
 
   const birthDay = person?.targetDate.split('-');
-  const nyeongan = getGanjiColorAndChinese(person?.saju?.year?.gan?.name);
-  const nyeonji = getGanjiColorAndChinese(person?.saju?.year?.ji?.name);
-  const wallgan = getGanjiColorAndChinese(person?.saju?.month?.gan?.name);
-  const wallji = getGanjiColorAndChinese(person?.saju?.month?.ji?.name);
-  const ilgan = getGanjiColorAndChinese(person?.saju?.day?.gan?.name);
-  const ilji = getGanjiColorAndChinese(person?.saju?.day?.ji?.name);
-  const sigan = getGanjiColorAndChinese(person?.saju?.time?.gan?.name);
-  const siji = getGanjiColorAndChinese(person?.saju?.time?.ji?.name);
+  const nyeongan = getGanjiColorAndChinese(year?.gan.name);
+  const nyeonji = getGanjiColorAndChinese(year?.ji.name);
+  const wallgan = getGanjiColorAndChinese(month?.gan.name);
+  const wallji = getGanjiColorAndChinese(month?.ji.name);
+  const ilgan = getGanjiColorAndChinese(day?.gan.name);
+  const ilji = getGanjiColorAndChinese(day?.ji.name);
+  const sigan = getGanjiColorAndChinese(time?.gan.name);
+  const siji = getGanjiColorAndChinese(time?.ji.name);
 
   return (
     <main css={main}>
@@ -117,7 +48,7 @@ const FriendSaju = () => {
               background: ${sigan?.color};
             `}
           >
-            <p css={ganjiText}>{sigan?.chinese}</p>
+            <span css={ganjiText}>{sigan?.chinese}</span>
           </div>
           <div
             css={css`
@@ -125,7 +56,7 @@ const FriendSaju = () => {
               background: ${siji?.color};
             `}
           >
-            <p css={ganjiText}>{siji?.chinese}</p>
+            <span css={ganjiText}>{siji?.chinese}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.time?.ji}</p>
@@ -145,7 +76,7 @@ const FriendSaju = () => {
               background: ${ilgan?.color};
             `}
           >
-            <p css={ganjiText}>{ilgan?.chinese}</p>
+            <span css={ganjiText}>{ilgan?.chinese}</span>
           </div>
           <div
             css={css`
@@ -153,7 +84,7 @@ const FriendSaju = () => {
               background: ${ilji?.color};
             `}
           >
-            <p css={ganjiText}>{ilji?.chinese}</p>
+            <span css={ganjiText}>{ilji?.chinese}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.day?.ji}</p>
@@ -173,7 +104,7 @@ const FriendSaju = () => {
               background: ${wallgan?.color};
             `}
           >
-            <p css={ganjiText}>{wallgan?.chinese}</p>
+            <span css={ganjiText}>{wallgan?.chinese}</span>
           </div>
           <div
             css={css`
@@ -181,7 +112,7 @@ const FriendSaju = () => {
               background: ${wallji?.color};
             `}
           >
-            <p css={ganjiText}>{wallji?.chinese}</p>
+            <span css={ganjiText}>{wallji?.chinese}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.month?.ji}</p>
@@ -201,7 +132,7 @@ const FriendSaju = () => {
               background: ${nyeongan?.color};
             `}
           >
-            <p css={ganjiText}>{nyeongan?.chinese}</p>
+            <span css={ganjiText}>{nyeongan?.chinese}</span>
           </div>
           <div
             css={css`
@@ -209,7 +140,7 @@ const FriendSaju = () => {
               background: ${nyeonji?.color};
             `}
           >
-            <p css={ganjiText}>{nyeonji?.chinese}</p>
+            <span css={ganjiText}>{nyeonji?.chinese}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.year?.ji}</p>
@@ -236,7 +167,6 @@ const friendBirthCard = css`
     rgba(255, 255, 255, 0.51) 0%,
     rgba(31, 31, 31, 0.28) 88.42%
   );
-
   border-radius: 10px;
 `;
 const friendSajuCard = css`

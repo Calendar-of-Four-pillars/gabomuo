@@ -1,27 +1,89 @@
+/** @jsxImportSource @emotion/react */
 import 'antd/dist/antd.css';
-import { Input, Form, Select, Radio, Button } from 'antd';
-import type { SelectProps } from 'antd';
-import { Controller, useForm } from 'react-hook-form';
-import { css } from '@emotion/react';
-import { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
+import { Form, Button } from 'antd';
+import { useForm } from 'react-hook-form';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { friend } from 'src/store/friendStore';
+import { css } from '@emotion/react';
+import { yearItems, monthItems, dayItems, hourItems, minuteItems, cityItems } from './util';
+import InputField from './inputField';
+import RadioField from './radioField';
+import SelectField from './selectField';
+import LeftRightButton from './leftRightButton';
 
 const FriendCreateForm = () => {
   const router = useRouter();
-  const { register, handleSubmit, control } = useForm();
-  const [person, setPerson] = useRecoilState(friend);
+  const nameRef = useRef(null);
 
-  const handleFocus = (e) => {
-    if (e.target.nextSibling) {
-      e.target.nextSibling.focus();
+  const [name, setName] = useState(false);
+  const [gender, setGender] = useState(false);
+  const [calendarType, setCalendarType] = useState(false);
+  const { control } = useForm();
+
+  const [person, setPerson] = useRecoilState(friend);
+  const [formData, setFormData] = useState({
+    name: { value: 0, isFilled: false },
+    gender: { value: 0, isFilled: false },
+    calendarType: { value: 0, isFilled: false },
+    year: { value: 0, isFilled: false },
+    month: { value: 0, isFilled: false },
+    day: { value: 0, isFilled: false },
+    hour: { value: 0, isFilled: false },
+    minute: { value: 0, isFilled: false },
+    city: { value: 0, isFilled: false }
+  });
+
+  const nameKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      setName((prev) => !prev);
     }
   };
-  const onSubmit = (data) => {
+
+  const genderClick = (e) => {
+    e.preventDefault();
+    setGender((prev) => !prev);
+  };
+  const calendarTypeClick = (e) => {
+    e.preventDefault();
+    setCalendarType((prev) => !prev);
+  };
+  const yearChange = (year) => {
+    setFormData((prev) => {
+      return { ...prev, year: { value: year, isFilled: (prev) => !prev } };
+    });
+  };
+  const monthChange = (month) => {
+    setFormData((prev) => {
+      return { ...prev, month: { value: month, isFilled: (prev) => !prev } };
+    });
+    console.log('formData', formData);
+  };
+  const dayChange = (day) => {
+    setFormData((prev) => {
+      return { ...prev, day: { value: day, isFilled: (prev) => !prev } };
+    });
+  };
+  const hourChange = (hour) => {
+    setFormData((prev) => {
+      return { ...prev, hour: { value: hour, isFilled: (prev) => !prev } };
+    });
+  };
+  const minuteChange = (minute) => {
+    setFormData((prev) => {
+      return { ...prev, minute: { value: minute, isFilled: (prev) => !prev } };
+    });
+  };
+  const cityChange = (city) => {
+    setFormData((prev) => {
+      return { ...prev, city: { value: city, isFilled: (prev) => !prev } };
+    });
+  };
+  const onFinish = (data) => {
     router.replace('/friendSaju');
-    createFriend(data).then((res) => {
+    createFriend(formData).then((res) => {
       console.log('res', res);
       setPerson(res?.data);
     });
@@ -29,195 +91,158 @@ const FriendCreateForm = () => {
 
   const createFriend = (data) => {
     return fetch(
-      `http://localhost:3000/api/calculator?hour=${data?.hour}&minute=${data?.minute}&year=${data?.year}&month=${data?.month}&day=${data?.day}`
+      `http://localhost:3000/api/calculator?hour=${data?.hour.value}&minute=${data?.minute.value}&year=${data?.year.value}&month=${data?.month.value}&day=${data?.day.value}`
     ).then((res) => {
       console.log('res', res);
       return res.json();
     });
   };
-  const year: SelectProps['options'] = [];
-  const month: SelectProps['options'] = [];
-  const day: SelectProps['options'] = [];
-  const hour: SelectProps['options'] = [];
-  const minute: SelectProps['options'] = [];
-  const city: SelectProps['options'] = [
-    { label: '기준(+0)', value: 0 },
-    { label: '서울(-2)', value: -2 },
-    { label: '부산(+6)', value: 6 },
-    { label: '대구(+4)', value: 4 },
-    { label: '인천(-3)', value: -3 },
-    { label: '광주(-2)', value: -2 },
-    { label: '대전(+0)', value: 0 },
-    { label: '청주(+0)', value: 0 },
-    { label: '전주(-1)', value: -1 },
-    { label: '춘천(+1)', value: 1 },
-    { label: '원주(+2)', value: 2 },
-    { label: '구미(+3)', value: 3 },
-    { label: '강릉(+5)', value: 5 },
-    { label: '포항(+7)', value: 7 },
-    { label: '경주(+6)', value: 6 },
-    { label: '목포(-5)', value: 5 },
-    { label: '제주(-4)', value: -4 }
-  ];
-
-  for (let i = 1899; i < 2100; i += 1) {
-    year.push({
-      label: i + 1,
-      value: i + 1
-    });
-  }
-
-  for (let i = 0; i < 12; i += 1) {
-    month.push({ label: i + 1, value: i + 1 });
-  }
-
-  for (let i = 0; i < 31; i += 1) {
-    day.push({
-      label: i + 1,
-      value: i + 1
-    });
-  }
-
-  for (let i = 0; i < 12; i += 1) {
-    hour.push({
-      label: i + 1,
-      value: i + 1
-    });
-  }
-
-  for (let i = 0; i < 60; i += 1) {
-    minute.push({
-      label: i + 1,
-      value: i + 1
-    });
-  }
 
   return (
-    <Form onFinish={onSubmit}>
-      <CustomFormItem name="name" label="이름">
-        <Input placeholder="무명인" />
-      </CustomFormItem>
-      <CustomFormItem name="name2" label="이름2">
-        <Input placeholder="무명인" />
-      </CustomFormItem>
-      <CustomFormItem name="gender" label="성별">
-        <CustomRadioGroup defaultValue="female" buttonStyle="solid">
-          <Radio.Button value="male">남성</Radio.Button>
-          <Radio.Button value="female">여성</Radio.Button>
-        </CustomRadioGroup>
-      </CustomFormItem>
-      <CustomFormItem name="calendarType" label="음/양력">
-        <CustomRadioGroup defaultValue="solarCalendar" buttonStyle="solid">
-          <Radio.Button value="solarCalendar">양력</Radio.Button>
-          <Radio.Button value="moonCalendar">음력</Radio.Button>
-          <Radio.Button value="leapMonth">윤달</Radio.Button>
-        </CustomRadioGroup>
-      </CustomFormItem>
-      <Controller
-        render={() => (
-          <CustomFormItem
+    <Form onFinish={onFinish}>
+      {!name && (
+        <InputField
+          name="name"
+          label="이름"
+          placeholder="무명인"
+          ref={nameRef}
+          onKeyDown={nameKeyDown}
+        />
+      )}
+      {name && !gender && (
+        <div css={fadeInFadeOut}>
+          <RadioField
+            name="gender"
+            label="성별"
+            value={[
+              { value: 'female', text: '여성' },
+              { value: 'male', text: '남성' }
+            ]}
+            onClick={genderClick}
+          />
+          <LeftRightButton onClickPrev={nameKeyDown} onClickNext={genderClick} />
+        </div>
+      )}
+      {gender && !calendarType && (
+        <div css={fadeInFadeOut}>
+          <RadioField
+            name="calendarType"
+            label="음/양력"
+            value={[
+              { value: 'solarCalendar', text: '양력' },
+              { value: 'moonCalendar', text: '음력' },
+              { value: 'leapMonth', text: '윤달' }
+            ]}
+            onClick={calendarTypeClick}
+          />
+          <LeftRightButton onClickPrev={genderClick} onClickNext={calendarTypeClick} />
+        </div>
+      )}
+      {calendarType && !formData.year.isFilled && (
+        <div css={fadeInFadeOut}>
+          <SelectField
+            items={yearItems}
+            control={control}
             name="year"
             label="태어난 해"
-            rules={[
-              {
-                required: true,
-                message: '태어난 해를 입력해주세요.'
-              }
-            ]}
-          >
-            <Select placeholder="년" options={year} />
-          </CustomFormItem>
-        )}
-        control={control}
-        name="year"
-      />
-      <Controller
-        render={() => (
-          <CustomFormItem
+            required={true}
+            placeholder="년"
+            onChange={yearChange}
+          />
+          <LeftRightButton onClickPrev={calendarTypeClick} onClickNext={yearChange} />
+        </div>
+      )}
+      {formData.year.isFilled && !formData.month.isFilled && (
+        <div css={fadeInFadeOut}>
+          <SelectField
+            items={monthItems}
+            control={control}
             name="month"
             label="태어난 달"
-            rules={[
-              {
-                required: true,
-                message: '태어난 달을 입력해주세요.'
-              }
-            ]}
-          >
-            <Select placeholder="월" options={month} />
-          </CustomFormItem>
-        )}
-        control={control}
-        name="month"
-      />
-      <Controller
-        render={() => (
-          <CustomFormItem
+            required={true}
+            placeholder="월"
+            onChange={monthChange}
+          />
+          <LeftRightButton onClickPrev={yearChange} onClickNext={monthChange} />
+        </div>
+      )}
+      {formData.month.isFilled && !formData.day.isFilled && (
+        <div css={fadeInFadeOut}>
+          <SelectField
+            items={dayItems}
+            control={control}
             name="day"
             label="태어난 날"
-            rules={[
-              {
-                required: true,
-                message: '태어난 날을 입력해주세요.'
-              }
-            ]}
-          >
-            <Select placeholder="일" options={day} />
-          </CustomFormItem>
-        )}
-        control={control}
-        name="day"
-      />
-      <Controller
-        render={() => (
-          <CustomFormItem name="hour" label="태어난 시">
-            <Select placeholder="시" options={hour} />
-          </CustomFormItem>
-        )}
-        control={control}
-        name="hour"
-        defaultValue={0}
-      />
-      <Controller
-        render={() => (
-          <CustomFormItem name="minute" label="태어난 분">
-            <Select placeholder="분" options={minute} />
-          </CustomFormItem>
-        )}
-        control={control}
-        name="minute"
-        defaultValue={0}
-      />
-      <Controller
-        render={() => (
-          <CustomFormItem name="city" label="태어난 지역">
-            <Select placeholder="지역" options={city} />
-          </CustomFormItem>
-        )}
-        control={control}
-        name="city"
-      />
-      <CustomFormItem>
-        <Button type="primary" htmlType="submit">
-          확인
-        </Button>
-      </CustomFormItem>
+            required={true}
+            placeholder="일"
+            onChange={dayChange}
+          />
+          <LeftRightButton onClickPrev={monthChange} onClickNext={dayChange} />
+        </div>
+      )}
+      {formData.day.isFilled && !formData.hour.isFilled && (
+        <div css={fadeInFadeOut}>
+          <SelectField
+            items={hourItems}
+            control={control}
+            name="hour"
+            label="태어난 시"
+            required={true}
+            placeholder="시"
+            onChange={hourChange}
+          />
+          <LeftRightButton onClickPrev={dayChange} onClickNext={hourChange} />
+        </div>
+      )}
+      {formData.hour.isFilled && !formData.minute.isFilled && (
+        <div css={fadeInFadeOut}>
+          <SelectField
+            items={minuteItems}
+            control={control}
+            name="minute"
+            label="태어난 분"
+            required={true}
+            placeholder="분"
+            onChange={minuteChange}
+          />
+          <LeftRightButton onClickPrev={hourChange} onClickNext={minuteChange} />
+        </div>
+      )}
+      {formData.minute.isFilled && (
+        <div css={fadeInFadeOut}>
+          <SelectField
+            items={cityItems}
+            control={control}
+            name="city"
+            label="태어난 지역"
+            required={true}
+            placeholder="지역"
+            onChange={cityChange}
+          />
+          <LeftRightButton onClickPrev={hourChange} onClickNext={minuteChange} />
+        </div>
+      )}
+      {formData.city.isFilled && (
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            확인
+          </Button>
+        </Form.Item>
+      )}
     </Form>
   );
 };
-
-const CustomRadioGroup = styled(Radio.Group)`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const CustomFormItem = styled(Form.Item)`
-  > div > div > label {
-    color: white;
-  }
-
-  > div > div > div > div > div > label {
-    width: 30%;
+const fadeInFadeOut = css`
+  animation: smoothAppear 1s;
+  @keyframes smoothAppear {
+    from {
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
-
 export default FriendCreateForm;
