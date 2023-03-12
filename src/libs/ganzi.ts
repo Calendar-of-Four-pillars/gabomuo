@@ -656,3 +656,28 @@ export const calTenGodsFromEightWords = (ju: SajuObjType) => {
   const convertedEightWordsToSipsin = makeSipsinFromEightWords(normalizedEightWords);
   return convertedEightWordsToSipsin;
 };
+
+export const CHINESE = {
+  갑: '甲',
+  을: '乙',
+  병: '丙',
+  정: '丁',
+  무: '戊',
+  기: '己',
+  경: '庚',
+  신: '辛',
+  임: '壬',
+  계: '癸',
+  자: '子',
+  축: '丑',
+  인: '寅',
+  묘: '卯',
+  진: '辰',
+  사: '巳',
+  오: '午',
+  미: '未',
+  신: '申',
+  유: '酉',
+  술: '戌',
+  해: '亥'
+};

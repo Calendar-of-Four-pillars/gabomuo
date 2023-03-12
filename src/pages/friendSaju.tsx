@@ -1,10 +1,13 @@
 /** @jsxImportSource @emotion/react */
+import { useEffect } from 'react';
 import { css } from '@emotion/react';
 import { useRecoilState } from 'recoil';
 import { friend } from 'src/store/friendStore';
+import { GANZICOLOR } from 'src/styles/style';
+import { CHINESE } from 'src/libs/ganzi';
 import { getGanjiColorAndChinese } from './util';
 
-const FriendSaju = () => {
+function FriendSaju() {
   const [person, setPerson] = useRecoilState(friend);
   const { year, month, day, time } = person?.saju;
 
@@ -18,16 +21,20 @@ const FriendSaju = () => {
   const sigan = getGanjiColorAndChinese(time?.gan.name);
   const siji = getGanjiColorAndChinese(time?.ji.name);
 
+  useEffect(() => {
+    console.log('person', person);
+  }, [person]);
+
   return (
     <main css={main}>
       <section css={friendBirthCard}>
         <div
           css={css`
             ${ganjiBox};
-            background: ${ilgan?.color};
+            background: ${GANZICOLOR[day?.gan.element]};
           `}
         >
-          <span css={ganjiText}>{ilgan?.chinese}</span>
+          <span css={ganjiText}>{CHINESE[day?.gan.name]}</span>
         </div>
         <div css={friendBirthCardInfo}>
           <p css={friendBirthCardInfoName}>무명인 (나이)</p>
@@ -45,18 +52,18 @@ const FriendSaju = () => {
           <div
             css={css`
               ${ganjiBox};
-              background: ${sigan?.color};
+              background: ${GANZICOLOR[time?.gan.element]};
             `}
           >
-            <span css={ganjiText}>{sigan?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[time?.gan.name]}</span>
           </div>
           <div
             css={css`
               ${ganjiBox};
-              background: ${siji?.color};
+              background: ${GANZICOLOR[time?.ji.element]};
             `}
           >
-            <span css={ganjiText}>{siji?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[time?.ji.name]}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.time?.ji}</p>
@@ -73,18 +80,18 @@ const FriendSaju = () => {
           <div
             css={css`
               ${ganjiBox};
-              background: ${ilgan?.color};
+              background: ${GANZICOLOR[day?.gan.element]};
             `}
           >
-            <span css={ganjiText}>{ilgan?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[day?.gan.name]}</span>
           </div>
           <div
             css={css`
               ${ganjiBox};
-              background: ${ilji?.color};
+              background: ${GANZICOLOR[day?.ji.element]};
             `}
           >
-            <span css={ganjiText}>{ilji?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[day?.ji.name]}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.day?.ji}</p>
@@ -101,18 +108,18 @@ const FriendSaju = () => {
           <div
             css={css`
               ${ganjiBox};
-              background: ${wallgan?.color};
+              background: ${GANZICOLOR[month?.gan.element]};
             `}
           >
-            <span css={ganjiText}>{wallgan?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[month?.gan.name]}</span>
           </div>
           <div
             css={css`
               ${ganjiBox};
-              background: ${wallji?.color};
+              background: ${GANZICOLOR[month?.ji.element]};
             `}
           >
-            <span css={ganjiText}>{wallji?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[month?.ji.name]}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.month?.ji}</p>
@@ -129,18 +136,18 @@ const FriendSaju = () => {
           <div
             css={css`
               ${ganjiBox};
-              background: ${nyeongan?.color};
+              background: ${GANZICOLOR[year?.gan.element]};
             `}
           >
-            <span css={ganjiText}>{nyeongan?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[year?.gan.name]}</span>
           </div>
           <div
             css={css`
               ${ganjiBox};
-              background: ${nyeonji?.color};
+              background: ${GANZICOLOR[year?.ji.element]};
             `}
           >
-            <span css={ganjiText}>{nyeonji?.chinese}</span>
+            <span css={ganjiText}>{CHINESE[year?.ji.name]}</span>
           </div>
           <div css={ganjiInfo}>
             <p>{person?.sipsin?.year?.ji}</p>
@@ -151,7 +158,7 @@ const FriendSaju = () => {
       </section>
     </main>
   );
-};
+}
 
 const main = css`
   position: relative;

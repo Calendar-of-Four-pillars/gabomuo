@@ -9,4 +9,5 @@ export const COLOR = {
   Iron: '#fff',
   Water: '#37393D'
 };
-// 배열 [0, 1, 2, 3, 4 ] mapping 목화토금수 ganzi.ts
+
+export const GANZICOLOR = ['#00B050', '#F35252', '#F8DA4A', '#fff', '#37393D'];
