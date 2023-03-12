@@ -4,7 +4,6 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 const Login: NextPage = () => {
   const result = useSession();
 
-  console.log('session', result);
   if (result.data) {
     return (
       <>

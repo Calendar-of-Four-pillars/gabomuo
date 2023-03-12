@@ -1,41 +1,43 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-param-reassign */
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import nextAuth, { NextAuthOptions } from 'next-auth';
 import NaverProvider from 'next-auth/providers/naver';
+import client from 'src/libs/client';
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
+  adapter: PrismaAdapter(client),
   providers: [
     NaverProvider({
       clientId: process.env.NAVER_ID as string,
-      clientSecret: process.env.NAVER_SECRET as string
+      clientSecret: process.env.NAVER_SECRET as string,
+      profile(profile) {
+        const {
+          response: { gender, birthday, birthyear }
+        } = profile as { response: { gender: string; birthday: string; birthyear: string } };
+
+        const convertedForm = {
+          gender: gender ?? null,
+          birth_year: +birthyear ?? null,
+          birth_month: +birthday.split('-')[0] ?? null,
+          birth_day: +birthday.split('-')[1] ?? null
+        };
+        return {
+          ...convertedForm,
+          email: profile.response.email,
+          id: profile.response.id
+        };
+      }
     })
     // ...add more providers here
   ],
   callbacks: {
-    async jwt({ token, account }) {
-      // Persist the OAuth access_token to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token;
-      }
-      return token;
-    },
-    async session({ session, token, user }) {
-      console.log('user', user);
-      // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken;
-      return session;
-    },
-    async signIn(data) {
-      console.log('sign', data);
-      const isAllowedToSignIn = true;
-      if (isAllowedToSignIn) {
-        return true;
-      }
-      // Return false to display a default error message
-      return false;
-      // Or you can return a URL to redirect to:
-      // return '/unauthorized'
+    session: async ({ session, user }) => {
+      session.id = user.id;
+      return Promise.resolve(session);
     }
-  }
+  },
+  secret: process.env.SECRET
 };
 export default nextAuth(authOptions);

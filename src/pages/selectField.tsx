@@ -2,7 +2,7 @@ import { Input, Form, Select, Radio, Button } from 'antd';
 import { forwardRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-const SelectField = ({ items, control, name, label, required, placeholder, onChange }) => {
+const SelectField = ({ items, control, name, label, required, placeholder, onChange }, ref) => {
   return (
     <Controller
       render={() => (
@@ -22,6 +22,7 @@ const SelectField = ({ items, control, name, label, required, placeholder, onCha
             placeholder={placeholder}
             options={items}
             onChange={(velue) => onChange(velue)}
+            ref={ref}
           />
         </Form.Item>
       )}

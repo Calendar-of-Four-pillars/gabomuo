@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import 'antd/dist/antd.css';
 import { Form, Button } from 'antd';
-import { useForm } from 'react-hook-form';
+import { useForm, register } from 'react-hook-form';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
-import { friend } from 'src/store/friendStore';
+import { myoungJo } from 'src/store/friendStore';
 import { css } from '@emotion/react';
 import { yearItems, monthItems, dayItems, hourItems, minuteItems, cityItems } from './util';
 import InputField from './inputField';
@@ -16,13 +16,15 @@ import LeftRightButton from './leftRightButton';
 const FriendCreateForm = () => {
   const router = useRouter();
   const nameRef = useRef(null);
+  const yearRef = useRef(null);
 
   const [name, setName] = useState(false);
   const [gender, setGender] = useState(false);
   const [calendarType, setCalendarType] = useState(false);
   const { control } = useForm();
 
-  const [person, setPerson] = useRecoilState(friend);
+  const [person, setPerson] = useRecoilState(myoungJo);
+
   const [formData, setFormData] = useState({
     name: { value: 0, isFilled: false },
     gender: { value: 0, isFilled: false },
@@ -59,7 +61,6 @@ const FriendCreateForm = () => {
     setFormData((prev) => {
       return { ...prev, month: { value: month, isFilled: (prev) => !prev } };
     });
-    console.log('formData', formData);
   };
   const dayChange = (day) => {
     setFormData((prev) => {
@@ -147,7 +148,9 @@ const FriendCreateForm = () => {
             label="태어난 해"
             required={true}
             placeholder="년"
+            ref={yearRef}
             onChange={yearChange}
+            {...register('year')
           />
           <LeftRightButton onClickPrev={calendarTypeClick} onClickNext={yearChange} />
         </div>
@@ -219,7 +222,6 @@ const FriendCreateForm = () => {
             placeholder="지역"
             onChange={cityChange}
           />
-          <LeftRightButton onClickPrev={hourChange} onClickNext={minuteChange} />
         </div>
       )}
       {formData.city.isFilled && (

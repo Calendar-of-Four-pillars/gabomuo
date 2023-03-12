@@ -13,6 +13,11 @@ type JiObjType = {
   name: JiType;
   np: boolean;
   element: number;
+  intermidiation: {
+    yeo: GanObjType;
+    joong?: GanObjType;
+    jung: GanObjType;
+  };
 };
 
 type JuObjType = {
@@ -104,62 +109,119 @@ export const ji: {
   0: {
     name: '자',
     np: false,
-    element: 4
+    element: 4,
+    intermidiation: {
+      yeo: gan['8'],
+      jung: gan['9']
+    }
   },
   1: {
     name: '축',
     np: false,
-    element: 2
+    element: 2,
+    intermidiation: {
+      yeo: gan['9'],
+      joong: gan['7'],
+      jung: gan['5']
+    }
   },
   2: {
     name: '인',
     np: true,
-    element: 0
+    element: 0,
+    intermidiation: {
+      yeo: gan['4'],
+      joong: gan['2'],
+      jung: gan['0']
+    }
   },
   3: {
     name: '묘',
     np: false,
-    element: 0
+    element: 0,
+    intermidiation: {
+      yeo: gan['0'],
+      jung: gan['1']
+    }
   },
   4: {
     name: '진',
     np: true,
-    element: 2
+    element: 2,
+    intermidiation: {
+      yeo: gan['1'],
+      joong: gan['9'],
+      jung: gan['4']
+    }
   },
   5: {
     name: '사',
     np: true,
-    element: 1
+    element: 1,
+    intermidiation: {
+      yeo: gan['4'],
+      joong: gan['6'],
+      jung: gan['2']
+    }
   },
   6: {
     name: '오',
     np: false,
-    element: 1
+    element: 1,
+    intermidiation: {
+      yeo: gan['2'],
+      joong: gan['5'],
+      jung: gan['6']
+    }
   },
   7: {
     name: '미',
     np: false,
-    element: 2
+    element: 2,
+    intermidiation: {
+      yeo: gan['8'],
+      joong: gan['7'],
+      jung: gan['9']
+    }
   },
   8: {
     name: '신',
     np: true,
-    element: 3
+    element: 3,
+    intermidiation: {
+      yeo: gan['3'],
+      joong: gan['1'],
+      jung: gan['5']
+    }
   },
   9: {
     name: '유',
     np: false,
-    element: 3
+    element: 3,
+    intermidiation: {
+      yeo: gan['6'],
+      jung: gan['7']
+    }
   },
   10: {
     name: '술',
     np: true,
-    element: 2
+    element: 2,
+    intermidiation: {
+      yeo: gan['7'],
+      joong: gan['3'],
+      jung: gan['4']
+    }
   },
   11: {
     name: '해',
     np: true,
-    element: 4
+    element: 4,
+    intermidiation: {
+      yeo: gan['4'],
+      joong: gan['0'],
+      jung: gan['8']
+    }
   }
 };
 
